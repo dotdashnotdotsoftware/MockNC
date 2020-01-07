@@ -68,7 +68,7 @@ MyFunc(); //Now returns 20
 # Extra Bits
 Now, simply helping you swap the implementation behind a function is great and everything but it helps to have some extra tools!
 
-## MNC_Swap and MNC_RESET
+## MNC_SWAP and MNC_RESET
 Using ```MNC_SWAP(identifier, new_target)``` and ```MNC_RESET()``` is a great combination when writing tests. Instead of manually tracking which functions are pointing where, one can simply reset the state of play at the start of each test:
 ```
     //Arrange
@@ -102,5 +102,23 @@ void TestOne()
 
 	//Assert
 	printf("%s\n", 3 == Mock_Foo.CallCount ? "PASS" : "FAIL");
+}
+```
+
+```
+MNC_VOID_MOCK(Mock_Log_Foo, ())
+
+//Typical testing example, using a MockNC MOCK
+void TestFour()
+{
+	//Arrange
+	MNC_RESET();
+	MNC_SWAP(Log_Access, Mock_Log_Foo.MockFunc);
+
+	//Act - Prove Get_Foo() uses Log_Access()
+	Get_Foo();
+
+	//Assert
+	printf("%s\n", 1 == Mock_Log_Foo.CallCount ? "PASS" : "FAIL");
 }
 ```
