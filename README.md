@@ -2,6 +2,7 @@
 MockNC (Mock-n-see) is a basic Mocking Framework for C to simplify unit testing. By leveraging function pointers, any function written through MockNC can be easily swapped out for another, redirecting all calls to your substituted function instead of the original. 
 # How it works
 Whereas normally code might look like:
+
 **Header**
 ```
 int MyFunc();
@@ -14,6 +15,7 @@ int MyFunc()
 }
 ```
 Code written using MockNC would look like:
+
 **Header**
 ```
 MNC_DECLARATION(int, MyFunc, ())
@@ -26,6 +28,7 @@ MNC_DEFINITION(int, MyFunc, ())
 }
 ```
 Which in the default configuration will just expand to output your code as normal!
+
 **Header**
 ```
 int MyFunc();
@@ -38,6 +41,7 @@ int MyFunc()
 }
 ```
 Define a preprocessor variable called "MNC" however and then the magic happens:
+
 **Header**
 ```
 extern int(*MyFunc)();
