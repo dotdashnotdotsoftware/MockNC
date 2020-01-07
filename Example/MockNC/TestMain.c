@@ -61,11 +61,9 @@ void TestFour()
 
 	//Act - Prove Get_Foo() uses Log_Access()
 	Get_Foo();
-	Get_Foo();
-	Get_Foo();
 
 	//Assert
-	printf("%s\n", 3 == Mock_Foo.CallCount ? "PASS" : "FAIL");
+	printf("%s\n", 1 == Mock_Log_Foo.CallCount ? "PASS" : "FAIL");
 }
 
 //Test Application Main
